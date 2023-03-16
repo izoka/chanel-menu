@@ -1,23 +1,23 @@
 import React, {useEffect, useMemo, useState} from "react";
-import { FormattedMenuData, formattedMenuData } from "../utils/menu";
+import { MenuData, formattedMenuData } from "../utils/menu";
 import MenuOptions from "./MenuOptions";
 
 import "./Menu.css";
 
 interface MenuProps {
-    data: FormattedMenuData[];
+    data: MenuData[];
 }
 
 const Menu: React.FC<MenuProps> = ({ data }) => {
-    const [currentScreenPosition, setCurrenScreenPosition] = useState<number>(0);
     const formattedOptions = useMemo(
         () => formattedMenuData(data),
         [data]
     );
-    const [selectedOption, setSelectedOption] = useState<FormattedMenuData | null>(null);
+    const [currentScreenPosition, setCurrenScreenPosition] = useState<number>(0);
+    const [selectedOption, setSelectedOption] = useState<MenuData | null>(null);
     const [heightMenu, setHeightMenu] = useState<number>(formattedOptions.length * 38)
 
-    const handleClickSubMenu = (option: FormattedMenuData) => {
+    const handleClickSubMenu = (option: MenuData) => {
         if (option.children) {
             setCurrenScreenPosition(currentScreenPosition - 100);
             setSelectedOption(option);

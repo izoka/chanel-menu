@@ -3,15 +3,15 @@ import { AiFillCaretRight } from "react-icons/ai";
 import { AiFillCaretLeft } from "react-icons/ai";
 
 import "./Menu.css";
-import { FormattedMenuData } from "../utils/menu";
+import { MenuData } from "../utils/menu";
 
 interface MenuOptionsProps {
-    formattedOptions: FormattedMenuData[];
-    onClickSubMenu: (option: FormattedMenuData) => void;
+    formattedOptions: MenuData[];
+    onClickSubMenu: (option: MenuData) => void;
     onCLickPrevMenu: (parentId: number | null) => void;
     position: number;
     currentScreenPosition: number;
-    selectedOption: FormattedMenuData | null;
+    selectedOption: MenuData | null;
 }
 
 
@@ -20,7 +20,7 @@ const MenuOptions = ({ formattedOptions, onClickSubMenu, onCLickPrevMenu, positi
     return (
         <ul className={`${!formattedOptions[0].parent && 'transition'}`} style={{left: `${!formattedOptions[0].parent ? currentScreenPosition : position}%`, width: "100%"}}>
             {formattedOptions.map((option, index) => (
-               <span key={index}>
+               <span key={option.id}>
                    {index === 0 && (
                        <>
                            {option && option.parent && (
@@ -35,7 +35,7 @@ const MenuOptions = ({ formattedOptions, onClickSubMenu, onCLickPrevMenu, positi
                            )}
                        </>
                    )}
-                   <li style={{width: "100%"}} key={option.id}>
+                   <li key={option.id}>
                        <div className={`menu-button ${(selectedOption?.id === option.parent || !selectedOption) ? 'flex' : 'none'}`} onClick={(e) => {
                            if (!option.children && option.url) {
                                window.open(option.url, "_blank")

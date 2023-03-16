@@ -1,15 +1,15 @@
 
-export interface FormattedMenuData {
+export interface MenuData {
     id: number;
     title: string;
     parent: number | null;
     url?: string;
-    children?: FormattedMenuData[];
+    children?: MenuData[];
 }
 
 // format menu data to array with children
-export const formattedMenuData = (data: FormattedMenuData[]) => {
-    const formattedMenuData = data as FormattedMenuData[];
+export const formattedMenuData = (data: MenuData[]) => {
+    const formattedMenuData = data as MenuData[];
     const ids = formattedMenuData.map((x) => x.id);
 
     return formattedMenuData.map((parent) => {
