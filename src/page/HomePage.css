@@ -1,0 +1,42 @@
+import React from "react";
+import Menu from "../components/Menu";
+
+const menuOptions = [
+    {
+        id: 1,
+        title: 'Artist',
+        parent: null,
+        children: [2, 3]
+    },
+    {
+        id: 2,
+        title: 'Stone',
+        parent: 1,
+        children: [5]
+    },
+    {
+        id: 3,
+        title: 'Metallica',
+        parent: 1,
+    },
+    {
+        id: 4,
+        title: 'Film',
+        parent: null,
+    },
+    {
+        id: 5,
+        title: 'The Rolling Stones',
+        parent: 2,
+    },
+]
+
+const HomePage: React.FC = () => {
+    return (
+        <div>
+            <Menu data={menuOptions} />
+        </div>
+    )
+}
+
+export default HomePage;
