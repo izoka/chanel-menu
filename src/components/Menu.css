@@ -1,0 +1,56 @@
+.menu {
+    background-color: #f6f7f8;
+    min-width: 420px;
+    overflow: hidden;
+}
+
+.transition {
+    transition-duration: 300ms;
+}
+
+.menu ul, .menu li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    cursor: pointer;
+}
+
+.menu li:hover {
+    background: rgba(90, 200, 250, 0.25);
+}
+
+.menu li:active {
+    background: rgba(90, 200, 250, 0.5);
+}
+
+.menu > ul {
+    left: 0%;
+    position: relative;
+    transform: translateZ(0);
+}
+
+.menu-button {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.menu li ul {
+    left: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.list-item {
+    display: list-item !important;
+}
+
+.flex {
+    display: flex !important;
+}
+.none {
+    display: none !important;
+}
