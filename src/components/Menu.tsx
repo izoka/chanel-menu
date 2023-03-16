@@ -52,7 +52,7 @@ const Menu: React.FC<MenuProps> = ({ data }) => {
     }, [formattedOptions.length, selectedOption]);
 
     return (
-        <div className="menu" style={{ height: `${heightMenu}px` }}>
+        <div className="menu transition" style={{ height: `${heightMenu}px` }}>
             <MenuOptions
                 currentScreenPosition={currentScreenPosition}
                 selectedOption={selectedOption}
