@@ -29,6 +29,7 @@ const Menu: React.FC<MenuProps> = ({ data }) => {
             setSelectedOption(null);
         }
         setCurrenScreenPosition(currentScreenPosition + 100);
+        //Get parent of parent for update select option
         if (parentId) {
             const firstParent = data.find(parent => parent.id === parentId)
             if (firstParent) {
@@ -43,6 +44,8 @@ const Menu: React.FC<MenuProps> = ({ data }) => {
     }
 
     useEffect(() => {
+        //Update height of menu by dynamic content
+        //Note: 38  is height by default for one menu option
         if (selectedOption && selectedOption.children) {
                 setHeightMenu((selectedOption.children.length * 38) + 38);
                 return;
@@ -50,7 +53,7 @@ const Menu: React.FC<MenuProps> = ({ data }) => {
 
        setHeightMenu(formattedOptions.length * 38);
     }, [formattedOptions.length, selectedOption]);
-
+    console.log(formattedOptions);
     return (
         <div className="menu transition" style={{ height: `${heightMenu}px` }}>
             <MenuOptions

@@ -18,7 +18,10 @@ interface MenuOptionsProps {
 const MenuOptions = ({ formattedOptions, onClickSubMenu, onCLickPrevMenu, position, currentScreenPosition, selectedOption }: MenuOptionsProps): JSX.Element => {
     const localPosition = 0;
     return (
-        <ul className={`${!formattedOptions[0].parent && 'transition'}`} style={{left: `${!formattedOptions[0].parent ? currentScreenPosition : position}%`, width: "100%"}}>
+        <ul
+            className={`${!formattedOptions[0].parent && 'transition'}`}
+            style={{left: `${!formattedOptions[0].parent ? currentScreenPosition : position}%`, width: "100%"}}
+        >
             {formattedOptions.map((option, index) => (
                <span key={option.id}>
                    {index === 0 && (
