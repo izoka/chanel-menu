@@ -13,13 +13,13 @@ const Menu: React.FC<MenuProps> = ({ data }) => {
         () => formattedMenuData(data),
         [data]
     );
-    const [currentScreenPosition, setCurrenScreenPosition] = useState<number>(0);
+    const [currentScreenPosition, setCurrentScreenPosition] = useState<number>(0);
     const [selectedOption, setSelectedOption] = useState<MenuData | null>(null);
     const [heightMenu, setHeightMenu] = useState<number>(formattedOptions.length * 38)
 
     const handleClickSubMenu = (option: MenuData) => {
         if (option.children) {
-            setCurrenScreenPosition(currentScreenPosition - 100);
+            setCurrentScreenPosition(currentScreenPosition - 100);
             setSelectedOption(option);
         }
     }
@@ -28,18 +28,19 @@ const Menu: React.FC<MenuProps> = ({ data }) => {
         if (!parentId) {
             setSelectedOption(null);
         }
-        setCurrenScreenPosition(currentScreenPosition + 100);
-        //Get parent of parent for update select option
+        setCurrentScreenPosition(currentScreenPosition + 100);
+        //Get parent of parent option for update select option
         if (parentId) {
             const firstParent = data.find(parent => parent.id === parentId)
             if (firstParent) {
                 const parent = data.find(parent => parent.id === firstParent.parent);
                 if (parent) {
                     setSelectedOption(parent ? parent : null);
-                } else {
-                    setSelectedOption(null);
+                    return;
                 }
+                setSelectedOption(null);
             }
+            setSelectedOption(null);
         }
     }
 
@@ -53,7 +54,7 @@ const Menu: React.FC<MenuProps> = ({ data }) => {
 
        setHeightMenu(formattedOptions.length * 38);
     }, [formattedOptions.length, selectedOption]);
-    console.log(formattedOptions);
+
     return (
         <div className="menu transition" style={{ height: `${heightMenu}px` }}>
             <MenuOptions

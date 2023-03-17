@@ -27,7 +27,7 @@
 }
 
 .menu > ul {
-    left: 0%;
+    left: 0;
     position: relative;
     transform: translateZ(0);
 }
@@ -42,10 +42,6 @@
     left: 100%;
     position: absolute;
     top: 0;
-}
-
-.list-item {
-    display: list-item !important;
 }
 
 .flex {

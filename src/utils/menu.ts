@@ -7,7 +7,7 @@ export interface MenuData {
     children?: MenuData[];
 }
 
-/* format menu data to array with children
+/* Menu data format to array with children
 Structure example : [
     {
         "id": 1,

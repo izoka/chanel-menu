@@ -14,7 +14,6 @@ interface MenuOptionsProps {
     selectedOption: MenuData | null;
 }
 
-
 const MenuOptions = ({ formattedOptions, onClickSubMenu, onCLickPrevMenu, position, currentScreenPosition, selectedOption }: MenuOptionsProps): JSX.Element => {
     const localPosition = 0;
     return (
@@ -42,10 +41,10 @@ const MenuOptions = ({ formattedOptions, onClickSubMenu, onCLickPrevMenu, positi
                        <div className={`menu-button ${(selectedOption?.id === option.parent || !selectedOption) ? 'flex' : 'none'}`} onClick={(e) => {
                            if (!option.children && option.url) {
                                window.open(option.url, "_blank")
-                           } else {
-                               e.stopPropagation();
-                               onClickSubMenu(option);
+                               return;
                            }
+                           e.stopPropagation();
+                           onClickSubMenu(option);
                        }}>
                            {option.title}
                            {option.children && <AiFillCaretRight />}
